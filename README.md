@@ -1,43 +1,40 @@
-# حباب شناور (Floating Bubble)
+# Floating Bubble (حباب شناور)
 
-یک اپلیکیشن اندروید (Kotlin) با یک حباب شناور که با لمس طولانی باز می‌شود و از روی اپ‌های دیگر
-عملیات زیر را انجام می‌دهد:
+A floating bubble for Android that lets you perform text/keyboard actions on any
+other app from an overlay — no need to switch away. Long-press the bubble to
+open a radial menu of actions.
 
-- انتخاب همه (Select All)
-- کپی (Copy)
-- پیست (Paste)
-- اینتر (Enter)
-- Alt / Tab / Shift
-- اسکرین‌شات (Screenshot)
+[فارسی — راهنمای کامل در ادامه](#فارسی)
 
-## پشتیبانی
-اندروید ۵ (API 21) تا اندروید ۱۶ (API 36). فایل‌های منیفست و سرویس برای نسخه‌های جدید
-(Overlay Permission + Foreground Service Type) تنظیم شده‌اند.
+## Features
+- Floating, draggable bubble shown over any app (`TYPE_APPLICATION_OVERLAY`).
+- Radial menu (long-press ~400ms or tap) with 8 actions around the bubble:
+  - Select All, Copy, Paste, Enter
+  - Alt, Tab, Shift
+  - Screenshot
+- Works on **Android 5 (API 21) through Android 16 (API 36)**.
+  - Overlay permission + foreground-service type handled for modern versions.
+- Actions that do not need root (Select All / Copy / Paste / Screenshot) use the
+  **AccessibilityService**.
+- `Ctrl / Alt / Tab / Shift` key injection requires **root** (see `RootHelper.kt`,
+  sends `input keyevent` via `su`). On a non-rooted device those keys show a
+  "requires root" toast.
 
-## نحوه اجرا
-1. پروژه را در **اندروید استودیو** باز کنید (File → Open → پوشه FloatingBubbleApp).
-2. روی دستگاه/اِمولاتور اجرا کنید (Run ▶).
-3. در صفحه اپ:
-   - دکمه «درخواست دسترسی Overlay» را بزنید و اجازه بدهید.
-   - دکمه «فعال‌سازی سرویس دسترسی» را بزنید و سرویس **حباب شناور** را روشن کنید.
-   - دکمه «شروع حباب شناور» را بزنید؛ حباب آبی روی صفحه ظاهر می‌شود.
-4. حباب را **نگه دارید (لمس طولانی ~۴۰۰ms)** یا کوتاه ضربه بزنید تا منوی دایره‌ای باز شود.
-5. روی هر گزینه بزنید تا اجرا شود.
+## Build it yourself
+1. Open this folder in **Android Studio** (File → Open).
+2. Run ▶ on a device/emulator.
+3. In the app: grant Overlay permission, enable the Accessibility service, then
+   press **Start floating bubble**.
+4. Long-press the bubble to open the radial menu.
 
-## نکته مهم درباره کلیدها
-اندروید در حالت **غیرروت** اجازه نمی‌دهد کلیدهای Ctrl/Alt/Tab/Shift را به اپ دیگر تزریق کنید.
-بنابراین:
+## Build via CI (GitHub Actions)
+Pushing to `main` triggers `.github/workflows/build.yml`, which builds a release
+APK on GitHub's x86 runners and attaches it to a **Draft Release** you can
+download. No local Android SDK required.
 
-- انتخاب همه / کپی / پیست / اسکرین‌شات → با **سرویس Accessibility** انجام می‌شوند (روت لازم نیست).
-- Ctrl/Alt/Tab/Shift → فقط با **روت** کار می‌کنند (بخش روت در `RootHelper.kt`).
-  - اگر دستگاه روت باشد، همه کلیدها دقیق از طریق `input keyevent` ارسال می‌شوند.
-  - اگر روت نباشد، اپ پیام می‌دهد که آن دکمه نیاز به روت دارد.
+## Root section
+The "Test root" button reports root availability. With root, key injection is
+exact; without root, only Accessibility-backed actions work.
 
-دکمه «تست دسترسی روت» وضعیت روت دستگاه را نشان می‌دهد.
-
-## ساختار
-- `MainActivity.kt` — صفحه اصلی و درخواست دسترسی‌ها
-- `FloatingBubbleService.kt` — حباب شناور + منوی دایره‌ای + اجرای عملیات
-- `BubbleAccessibilityService.kt` — سرویس دسترسی برای کپی/پیست/اسکرین‌شات
-- `RootHelper.kt` — اجرای دستورات روت و ارسال کلیدها
-- `BubbleAction.kt` — تعریف عملیات‌ها
+## License
+[MIT](LICENSE)

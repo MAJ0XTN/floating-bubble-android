@@ -8,3 +8,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Keep gradle wrapper (needed for CI)
+!gradle/wrapper/gradle-wrapper.jar

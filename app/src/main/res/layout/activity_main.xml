@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="12dp" />
+
+        <!-- Overlay permission -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:id="@+id/tvOverlayStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="دسترسی رویِ لایه (Overlay): بررسی..."
+                android:paddingBottom="8dp" />
+            <Button
+                android:id="@+id/btnOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="درخواست دسترسی Overlay" />
+        </LinearLayout>
+
+        <!-- Accessibility -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:id="@+id/tvAccStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="سرویس دسترسی (Accessibility): غیرفعال"
+                android:paddingBottom="8dp" />
+            <Button
+                android:id="@+id/btnAccessibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فعال‌سازی سرویس دسترسی" />
+        </LinearLayout>
+
+        <!-- Start / Stop bubble -->
+        <Button
+            android:id="@+id/btnToggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="شروع حباب شناور"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Root section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#FFF3E0"
+            android:layout_marginBottom="12dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="بخش روت (Ctrl / Alt / Tab / Shift)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingBottom="6dp" />
+            <TextView
+                android:id="@+id/tvRootStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="وضعیت روت: بررسی نشده"
+                android:paddingBottom="8dp" />
+            <Button
+                android:id="@+id/btnTestRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="تست دسترسی روت"
+                android:layout_marginBottom="8dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="کلیدهای Ctrl / Alt / Tab / Shift فقط با روت کار می‌کنند. گزینه‌های انتخاب همه / کپی / پیست / اسکرین‌شات هم با روت دقیق‌ترند وگرنه از سرویس دسترسی استفاده می‌کنند."
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

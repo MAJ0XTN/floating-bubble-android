@@ -1,0 +1,4 @@
+<resources>
+    <style name="Widget.Bubble" parent="android:Widget">
+    </style>
+</resources>

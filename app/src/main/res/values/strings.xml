@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">حباب شناور</string>
+    <string name="accessibility_desc">این سرویس برای انجام عملیات کپی، پیست و اسکرین‌شات از داخل حباب شناور استفاده می‌شود.</string>
+</resources>
